@@ -9,8 +9,9 @@ import {
 } from './definitions';
 import { formatCurrency } from './utils';
 
-const sql = postgres(process.env.POSTGRES_URL!, { ssl: 'require' });
-
+const sql = postgres(process.env.POSTGRES_URL!, {
+  ssl: 'require',
+});
 export async function fetchRevenue() {
   try {
     console.log('Fetching revenue data...');
@@ -125,8 +126,7 @@ export async function fetchFilteredInvoices(
 
 export async function fetchInvoicesPages(query: string) {
   try {
-    const data = await sql`
-      SELECT COUNT(*)
+    const data = await sql`SELECT COUNT(*)
       FROM invoices
       JOIN customers ON invoices.customer_id = customers.id
       WHERE
