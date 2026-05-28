@@ -1,6 +1,6 @@
 'use server';
-import { revalidatePath } from 'next/cache'; // tambah ini
-import { redirect } from 'next/navigation'; // tambah ini
+import { revalidatePath } from 'next/cache'; 
+import { redirect } from 'next/navigation'; 
 import postgres from 'postgres';
 import { signIn } from '@/auth';
 import { AuthError } from 'next-auth';
@@ -74,9 +74,9 @@ export async function updateInvoice(id: string, formData: FormData) {
 export async function deleteInvoice(id: string) {
   throw new Error('Failed to Delete Invoice');
 
-    await sql`DELETE FROM invoices WHERE id = ${id}`;
-    revalidatePath('/dashboard/invoices');
-  }
+  await sql`DELETE FROM invoices WHERE id = ${id}`;
+  revalidatePath('/dashboard/invoices');
+}
 
   export async function authenticate(
   prevState: string | undefined,
